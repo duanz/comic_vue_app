@@ -1,6 +1,6 @@
 <template>
   <div class="footertab">
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <span class="iconfont icon-shouye footer_tab_icon"></span>
       </mt-tab-item>
@@ -20,15 +20,19 @@
 <script>
 export default {
   name: "FooterTab",
+  data() {
+    return {
+      selected: "home"
+    };
+  },
   props: {
-    msg: String,
-    selected: "home"
+    msg: String
   }
 };
 </script>
 
 <style scoped>
-span.footer_tab_icon{
+span.footer_tab_icon {
   font-size: 45px;
 }
 </style>
