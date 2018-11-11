@@ -3,6 +3,7 @@
     <div class="comic_list_item media" v-for="item in comic_list" title="item.title"  v-bind:key="item.title" v-bind:name="item.title">
       <div class="img_block media-left" >
         <img class="comic_cover" :src="item.url" />
+        <div class="comic_cover_jiao">更新</div>
       </div>
       <div class="media-body">
         <h3 class="media-heading">{{item.title}}</h3>
@@ -14,6 +15,7 @@
     <div class="comic_list_item_2" v-for="item in comic_list" title="item.title"  v-bind:key="item.index" v-bind:name="item.title">
       <div class="img_block_2" >
         <img class="comic_cover_2" :src="item.url" />
+        <div class="comic_cover_jiao_2">更新</div>
       </div>
       <div class="text_bottom">
         <h3 class="media-heading">{{item.title}}</h3>
