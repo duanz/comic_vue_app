@@ -1,6 +1,6 @@
 <template>
   <div class="headertab">
-    <mt-header fixed v-bind:title="msg">
+    <mt-header fixed v-bind:title="title">
       <router-link to="/index" slot="left">
         <mt-button icon="back">返回</mt-button>
       </router-link>
@@ -15,7 +15,7 @@
 export default {
   name: "HeaderTab",
   props: {
-    msg: String
+    title: String
   }
 };
 </script>
