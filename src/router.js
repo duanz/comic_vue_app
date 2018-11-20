@@ -8,7 +8,15 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: () => import('./views/Index.vue')
+      component: () => import('./views/Comic.vue')
+    }, {
+      path: '/index',
+      name: 'index',
+      component: () => import('./views/Comic.vue')
+    }, {
+      path: '/book',
+      name: 'book',
+      component: () => import('./views/Book.vue')
     }
   ]
 })

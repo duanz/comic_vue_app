@@ -2,10 +2,14 @@
   <div class="footertab">
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
-        <span class="iconfont icon-shouye footer_tab_icon"></span>
+        <router-link to="/index">
+          <span class="iconfont icon-Icon_manhuaB footer_tab_icon"></span>
+        </router-link>
       </mt-tab-item>
       <mt-tab-item id="recommand">
-        <span class="iconfont icon-xitongcaidan footer_tab_icon"></span>
+        <router-link to="/book">
+          <span class="iconfont icon-shu footer_tab_icon"></span>
+        </router-link>
       </mt-tab-item>
       <mt-tab-item id="history">
         <span class="iconfont icon-buxing footer_tab_icon"></span>

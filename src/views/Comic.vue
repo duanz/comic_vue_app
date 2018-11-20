@@ -21,7 +21,7 @@ import Carousel from "@/components/Carousel.vue";
 import ComicList from "@/components/ComicList.vue";
 
 export default {
-  name: "Index",
+  name: "Comic",
   components: {
     HeaderTab,
     FooterTab,
