@@ -5,7 +5,7 @@
     </header>
     <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
       <Carousel :msg="msg" type="book" />
-      <ComicList :msg="msg" />
+      <ComicList :msg="msg" type="book" />
     </div>
   </div>
 </template>

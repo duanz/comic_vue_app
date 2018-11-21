@@ -1,7 +1,7 @@
 <template>
   <div class="comic_list">
-    <div class="comic_list_item media" v-for="item in comic_list" title="item.title"  v-bind:key="item.title" v-bind:name="item.title">
-      <div class="img_block media-left" >
+    <div class="comic_list_item media" v-for="item in comic_list" title="item.title"  v-bind:key="item.title" v-bind:name="item.title" v-on:click="clickBlock(type, item.id)">
+      <div class="img_block media-left">
         <img class="comic_cover" :src="item.url" />
         <div class="comic_cover_jiao">更新</div>
       </div>
@@ -12,7 +12,7 @@
     </div>
 
 // 第二种
-    <div class="comic_list_item_2" v-for="item in comic_list" title="item.title"  v-bind:key="item.index" v-bind:name="item.title">
+    <div class="comic_list_item_2" v-for="item in comic_list" title="item.title"  v-bind:key="item.index" v-bind:name="item.title" v-on:click="clickBlock(type, item.id)">
       <div class="img_block_2" >
         <img class="comic_cover_2" :src="item.url" />
         <div class="comic_cover_jiao_2">更新</div>
@@ -28,26 +28,48 @@
 </template>
 
 <script>
+import { clickToContent } from "../utils/common.js";
+
 export default {
   name: "ComicList",
   data: function() {
     return {
       comic_list: [
         {
+          id: 1,
           url:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
           title: "111"
         },
         {
+          id: 2,
           url:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
           title: "2222"
+        },
+        {
+          id: 3,
+          url:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
+          title: "322"
+        },
+        {
+          id: 4,
+          url:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
+          title: "433"
         }
       ]
     };
   },
   props: {
-    msg: String
+    msg: String,
+    type: String
+  },
+  methods: {
+    clickBlock: function(type, content_id) {
+      clickToContent(this, type, content_id);
+    }
   }
 };
 </script>

@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { clickToContent } from "../utils/common.js";
+
 export default {
   name: "Carousel",
   data: function() {
@@ -47,9 +49,9 @@ export default {
     msg: String,
     type: String
   },
-  methods:{
-    clickCarousel: function(type, content_id){
-      type==="comic" ? this.$router.push({name: 'comicDetail', params:{comic_id: content_id}}) : this.$router.push({name: 'bookDetail', book_id: content_id});
+  methods: {
+    clickCarousel: function(type, content_id) {
+      clickToContent(this, type, content_id);
     }
   }
 };
