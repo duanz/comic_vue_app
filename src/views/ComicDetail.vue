@@ -1,29 +1,35 @@
 <template>
   <div class="comic_details">
     <header class="header">
-      <HeaderTab msg="hello world" />
+      <HeaderTab msg="hello world" homeButton="/?selected=comic" />
     </header>
     <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
       <Carousel msg="123" />
-      <ComicList msg="test" />
-    </div>
-    <div class="mint-tabbar is-fixed">
-      <FooterTab msg="hello world" />
     </div>
   </div>
 </template>
 
 <script>
+import HeaderTab from "@/components/HeaderTab.vue";
+import Carousel from "@/components/Carousel.vue";
+
+import {getComicDetail} from '../api/comicApi';
+
 export default {
   name: "ComicDetail",
-  props: {
-    comic_id: String
-  },
   components: {
     HeaderTab,
-    FooterTab,
     Carousel,
-    ComicList
+  },
+  data: function(){
+    return {
+      img_list: []
+    }
+  },
+  mounted: function(){
+    getComicDetail({comic_id: this.$route.params.comic_id}).then(res => {
+      this.$data.img_list = res;
+    })
   }
 };
 </script>

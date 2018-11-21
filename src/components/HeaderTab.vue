@@ -1,10 +1,11 @@
 <template>
   <div class="headertab">
-    <mt-header fixed v-bind:title="title">
-      <router-link to="/index" slot="left">
+    <mt-header fixed v-bind:title="title?title: ''">
+      <!-- <router-link :to="backButton" slot="left"> -->
+      <a @click="goBack()"  slot="left">
         <mt-button icon="back">返回</mt-button>
-      </router-link>
-      <router-link to="/index" slot="right">
+      </a>
+      <router-link :to="homeButton?homeButton:''" slot="right">
         <mt-button icon="search iconfont icon-shouye"></mt-button>
       </router-link>
     </mt-header>
@@ -15,7 +16,14 @@
 export default {
   name: "HeaderTab",
   props: {
-    title: String
+    title: String,
+    homeButton: String,
+    // backButton: String
+  },
+  methods: {
+    goBack: function(){
+      this.$router.go(-1);
+    }
   }
 };
 </script>

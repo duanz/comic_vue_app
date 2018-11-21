@@ -53,7 +53,7 @@ export default {
   },
   data() {
     return {
-      selected: "comic"
+      selected: this.$route.query.selected? this.$route.query.selected :"comic"
     };
   }
 };

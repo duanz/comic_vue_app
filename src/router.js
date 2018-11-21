@@ -14,6 +14,10 @@ export default new Router({
       name: 'comic',
       component: () => import('./views/Comic.vue')
     }, {
+      path: '/comic/:comic_id',
+      name: 'comicDetail',
+      component: () => import('./views/ComicDetail.vue')
+    }, {
       path: '/book',
       name: 'book',
       component: () => import('./views/Book.vue')
