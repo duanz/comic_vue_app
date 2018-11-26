@@ -1,7 +1,7 @@
 <template>
   <div class="chapter_details">
-    <ul>
-      <li v-for="item in img_list" v-bind:key="item.index">
+    <ul style="list-style:none; padding-left:0px">
+      <li v-for="item in image_list" v-bind:key="item.index">
         <img v-lazy='item' />
       </li>
     </ul>
@@ -12,7 +12,7 @@
 export default {
   name: "ChapterDetail",
   props: {
-    img_list: Array
+    image_list: Array
   }
 };
 </script>
@@ -21,6 +21,11 @@ export default {
 image[lazy="loading"] {
   width: 100%;
   height: 300px;
+  margin: 0;
+}
+img[lazy="loaded"] {
+  width: 100%;
+  /* height: 300px; */
   margin: 0;
 }
 </style>
