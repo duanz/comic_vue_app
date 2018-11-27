@@ -7,7 +7,7 @@
       <ChapterDetail msg="123" :image_list="image_list" v-on:click.prevent.self="" />
       <p>
         <button type="button" class="btn btn-primary" @click="getChapterDetail(pre_chapter)">{{pre_chapter?"上一章": "已是首页"}}</button>
-        <button type="button" class="btn btn-default" @click="getChapterDetail(next_chapter)">{{next_chapter?"下一章": "以是末页"}}</button>
+        <button type="button" class="btn btn-default" @click="getChapterDetail(next_chapter)">{{next_chapter?"下一章": "已是末页"}}</button>
       </p>
     </div>
   </div>

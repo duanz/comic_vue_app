@@ -4,7 +4,7 @@
       <HeaderTab title="漫画" />
     </header>
     <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
-      <Carousel :msg="msg" type="comic" />
+      <Carousel :msg="msg" type="comic" :image_list="image_list" />
       <ComicList :msg="msg" />
     </div>
   </div>
@@ -24,7 +24,8 @@ export default {
     ComicList
   },
   props: {
-    msg: String
+    msg: String,
+    image_list: Array
   }
 };
 </script>

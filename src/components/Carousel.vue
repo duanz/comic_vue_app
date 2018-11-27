@@ -11,42 +11,13 @@
 </template>
 
 <script>
-const _image_list = [
-        {
-          id: 1,
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "111"
-        },
-        {
-          id: 2,
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "2222"
-        },
-        {
-          id: 3,
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "322"
-        },
-        {
-          id: 4,
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "433"
-        }
-      ];
 
 export default {
   name: "Carousel",
   props: {
     msg: String,
     type: String,
-    image_list: {
-      type:Array,
-      default: _image_list
-      }
+    image_list: Array
   },
   methods:{
     clickCarousel: function(type, content_id){

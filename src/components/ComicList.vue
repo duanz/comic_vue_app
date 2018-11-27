@@ -1,5 +1,5 @@
 <template>
-  <div class="comic_list">
+  <div class="comic_list" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
     <div class="comic_list_item media" v-for="item in comic_list" title="item.title"  v-bind:key="item.title" v-bind:name="item.title">
       <div class="img_block media-left" >
         <img class="comic_cover" :src="item.url" />
