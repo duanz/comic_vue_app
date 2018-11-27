@@ -9,15 +9,23 @@ export default new Router({
       path: '/',
       name: 'index',
       component: () => import('./views/BaseView.vue')
-    }, {
+    }, 
+    {
       path: '/comic',
       name: 'comic',
       component: () => import('./views/Comic.vue')
-    }, {
+    }, 
+    {
       path: '/comic/:comic_id',
       name: 'comicDetail',
       component: () => import('./views/ComicDetail.vue')
-    }, {
+    },
+    {
+      path: '/comic/chapter/:chapter_id',
+      name: 'comicChapterDetail',
+      component: () => import('./views/ComicChapterDetail.vue')
+    }, 
+    {
       path: '/book',
       name: 'book',
       component: () => import('./views/Book.vue')

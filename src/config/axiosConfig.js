@@ -68,6 +68,12 @@ axios.interceptors.response.use(
     res => {
         if (res.status === 200) {
             Indicator.close();
+            
+            if (res.data.code === 404) {
+                Toast(res.data.msg);
+                return Promise.reject(res);
+            }
+
             return Promise.resolve(res);
         } else {
             Indicator.close();

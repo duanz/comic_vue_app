@@ -29,4 +29,7 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+    margin-top: 8px;
+}
 </style>
