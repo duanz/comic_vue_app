@@ -1,5 +1,5 @@
 <template>
-  <div class="page_tabbar" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+  <div class="page_tabbar" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
     <header class="header">
       <HeaderTab title="我的" />
     </header>
@@ -8,19 +8,19 @@
         <mt-switch v-model="night_mode" v-on:change="night_mode_change(night_mode)"></mt-switch>
       </mt-cell>
       <div class="night_mode_selected_pannel">
-        <div class="night_mode_selected night_mode_1">
+        <div class="night_mode_selected night_mode_1" @click="selected_bg_image(1)">
           <p>中</p>
         </div>
-        <div class="night_mode_selected night_mode_2">
+        <div class="night_mode_selected night_mode_2" @click="selected_bg_image(2)">
           <p>中</p>
         </div>
-        <div class="night_mode_selected night_mode_3">
+        <div class="night_mode_selected night_mode_3" @click="selected_bg_image(3)">
           <p>中</p>
         </div>
-        <div class="night_mode_selected night_mode_4">
+        <div class="night_mode_selected night_mode_4" @click="selected_bg_image(4)">
           <p>中</p>
         </div>
-        <div class="night_mode_selected night_mode_5">
+        <div class="night_mode_selected night_mode_5" @click="selected_bg_image(5)">
           <p>中</p>
         </div>
       </div>
@@ -28,7 +28,7 @@
         <mt-cell style="text-align: left">
           <div slot="title">字体大小</div>
           <mt-range v-model="font_size" @change="font_size_change()" :min="14" :max="32" style="width: 250%; text-align: right; margin-left: -150%;">
-              <div slot="start">14px</div>
+              <div slot="start">18px</div>
               <div slot="end">32px</div>
             </mt-range>
         </mt-cell>
@@ -55,24 +55,48 @@ export default {
     msg: String
   },
   data: function() {
-    console.log(this.GLOBAL.night_mode_css_font_size);
+    console.log(typeof(this.GLOBAL.get_night_mode()));
     return {
-      night_mode: this.GLOBAL.night_mode || this.GLOBAL.night_mode == "true" ? true : false,
-      font_size: this.GLOBAL.night_mode_css_font_size ? this.GLOBAL.night_mode_css_font_size  : 14
+      night_mode: this.GLOBAL.get_night_mode(),
+      font_size: this.GLOBAL.get_night_mode_css_font_size()
     };
   },
   methods: {
     night_mode_change: function(night_mode) {
-      this.GLOBAL.night_mode = night_mode;
       this.GLOBAL.footer_selected = "member";
       sessionStorage.setItem("night_mode", night_mode);
+      if(night_mode){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_1.jpg");
+      }
       this.reload();  // 刷新
     },
     font_size_change: function () {
-      this.GLOBAL.night_mode_css_font_size = this.$data.font_size;
       this.GLOBAL.footer_selected = "member";
       sessionStorage.setItem("night_mode_css_font_size", this.$data.font_size);
-      console.log(this.GLOBAL.night_mode_css_font_size);
+      this.reload();  // 刷新
+    },
+    selected_bg_image: function (_type) {
+      if(_type==1){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_1.jpg");
+        sessionStorage.setItem("night_mode_css_font_color", "aliceblue");
+      }
+      else if(_type==2){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_2.jpg");
+        sessionStorage.setItem("night_mode_css_font_color", "aliceblue");
+      }
+      else if(_type==3){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_3.jpg");
+        sessionStorage.setItem("night_mode_css_font_color", "dark");
+      }
+      else if(_type==4){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_4.jpg");
+        sessionStorage.setItem("night_mode_css_font_color", "dark");
+      }
+      else if(_type==5){
+        sessionStorage.setItem("night_mode_css_bg_image", "../assets/images/read_bg_5.jpg");
+        sessionStorage.setItem("night_mode_css_font_color", "dark");
+      }
+      this.GLOBAL.footer_selected = "member";
       this.reload();  // 刷新
     }
   }

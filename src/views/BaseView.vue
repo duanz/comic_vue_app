@@ -1,10 +1,10 @@
 <template>
-  <div class="page-tabbar" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+  <div class="page-tabbar" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
     <div class="page-wrap">
       <!-- <div class="page-title">{{title}}</div> -->
  
 	<!-- tabcontainer -->
-      <mt-tab-container class="page-tabbar-container" v-model="selected" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+      <mt-tab-container class="page-tabbar-container" v-model="selected" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
         <mt-tab-container-item id="comic">
             <comic msg="漫画" :image_list="image_list" />
         </mt-tab-container-item>
@@ -20,7 +20,7 @@
       </mt-tab-container>
     </div>
  
-    <mt-tabbar v-model="selected" fixed v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+    <mt-tabbar v-model="selected" fixed v-bind:style="this.GLOBAL.get_night_mode()?'background-color:darkgrey':'background-color:#d5d5d5'">
       <mt-tab-item id="comic">
           <span class="iconfont icon-Icon_manhuaB footer_tab_icon"></span>
       </mt-tab-item>
@@ -79,7 +79,7 @@ export default {
     Member
   },
   data() {
-    console.log(this.GLOBAL.night_mode);
+    console.log(this.GLOBAL.get_night_mode());
     return {
       selected: this.$route.params.selected?this.$route.params.selected:this.GLOBAL.footer_selected,
       image_list: _image_list

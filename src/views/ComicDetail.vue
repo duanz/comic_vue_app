@@ -1,5 +1,5 @@
 <template>
-  <div class="comic_details" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+  <div class="comic_details" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
     <header class="header">
       <HeaderTab :title="title" homeButton="/?selected=comic" />
     </header>
@@ -10,7 +10,7 @@
         <p align="left">&emsp;&emsp;{{desc}}</p>
       </div>
       <div class="page-cell"  @click="toChapter(latest_chapter.id)">
-        <div class="mint-cell" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+        <div class="mint-cell" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
           <span class="mint-cell-mask"></span>
           <div class="mint-cell-left"></div>
           <div class="mint-cell-wrapper">
@@ -24,7 +24,7 @@
       </div>
       <div class="mulu_content">
         <h4>章节目录</h4>
-        <mt-navbar v-model="selected" v-bind:style="this.GLOBAL.night_mode?this.GLOBAL.night_mode_css:''">
+        <mt-navbar v-model="selected" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
           <mt-tab-item id="ascending">正序</mt-tab-item>
           <mt-tab-item id="descending">倒序</mt-tab-item>
         </mt-navbar>
