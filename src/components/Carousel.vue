@@ -1,7 +1,7 @@
 <template>
   <div class="carousel">
     <mt-swipe :auto="4000" showIndicators>
-      <mt-swipe-item v-for="item in image_list" v-bind:key="item.title" v-bind:name="item.title">
+      <mt-swipe-item v-for="(item, index) in image_list" v-bind:key="index" v-bind:name="item.title">
         <div class="img-block" v-on:click="clickCarousel(type, item.id)" v-bind:style="{backgroundImage:'url(' + item.url + ')', backgroundRepeat:'no-repeat', backgroundPosition:'center center', backgroundSize: 'contain'}">
           <p class="carousel-title">{{item.title}}</p>
           </div>

@@ -1,53 +1,40 @@
 <template>
   <div class="comic_list" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
-    <div class="comic_list_item media" v-for="item in comic_list" title="item.title"  v-bind:key="item.title" v-bind:name="item.title">
-      <div class="img_block media-left" >
-        <img class="comic_cover" :src="item.url" />
-        <div class="comic_cover_jiao">更新</div>
+    <!-- <div v-for="item in comic_list" title="item.title" v-bind:key="item.title" v-bind:name="item.title"> -->
+      <!-- //1 -->
+      <div class="comic_list_item media" v-if="comic.desc_type=='PL'">
+        <div class="img_block media-left">
+          <img class="comic_cover" :src="comic.url" />
+          <div class="comic_cover_jiao">更新</div>
+        </div>
+        <div class="media-body">
+          <h3 class="media-heading">{{comic.title}}</h3>
+          <span>{{comic.title}}</span>
+        </div>
       </div>
-      <div class="media-body">
-        <h3 class="media-heading">{{item.title}}</h3>
-        <span>{{item.title}}</span>
-      </div>
-    </div>
 
-// 第二种
-    <div class="comic_list_item_2" v-for="item in comic_list" title="item.title"  v-bind:key="item.index" v-bind:name="item.title">
-      <div class="img_block_2" >
-        <img class="comic_cover_2" :src="item.url" />
-        <div class="comic_cover_jiao_2">更新</div>
+      <!-- //2 -->
+      <div class="comic_list_item_2" v-if="comic.desc_type=='PT'">
+        <div class="img_block_2">
+          <img class="comic_cover_2" :src="comic.url" />
+          <div class="comic_cover_jiao_2">更新</div>
+        </div>
+        <div class="text_bottom">
+          <h3 class="media-heading">{{comic.title}}</h3>
+          <span>{{comic.title}}</span>
+        </div>
       </div>
-      <div class="text_bottom">
-        <h3 class="media-heading">{{item.title}}</h3>
-        <span>{{item.title}}</span>
-      </div>
-    </div>
 
-
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "ComicList",
-  data: function() {
-    return {
-      comic_list: [
-        {
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "111"
-        },
-        {
-          url:
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-          title: "2222"
-        }
-      ]
-    };
-  },
   props: {
-    msg: String
+    msg: String,
+    comic: Array
   }
 };
 </script>

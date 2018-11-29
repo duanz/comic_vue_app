@@ -6,16 +6,16 @@
 	<!-- tabcontainer -->
       <mt-tab-container class="page-tabbar-container" v-model="selected" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
         <mt-tab-container-item id="comic">
-            <comic msg="漫画" :image_list="image_list" />
+            <comic />
         </mt-tab-container-item>
         <mt-tab-container-item id="book">
-            <book msg="小说" />
+            <book  />
         </mt-tab-container-item>
         <mt-tab-container-item id="history">
-            <history msg="历史" />
+            <history  />
         </mt-tab-container-item>
         <mt-tab-container-item id="member">
-            <member msg="我的" />
+            <member  />
         </mt-tab-container-item>
       </mt-tab-container>
     </div>
