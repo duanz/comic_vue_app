@@ -1,6 +1,6 @@
 <template>
   <div class="comic_list" v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''">
-    <!-- <div v-for="item in comic_list" title="item.title" v-bind:key="item.title" v-bind:name="item.title"> -->
+    <div v-for="(comic, index) in comic_list" v-on:click="clickCarousel('comic', comic.id)" title="item.title" v-bind:key="index" v-bind:name="comic.title">
       <!-- //1 -->
       <div class="comic_list_item media" v-if="comic.desc_type=='PL'">
         <div class="img_block media-left">
@@ -8,8 +8,8 @@
           <div class="comic_cover_jiao">更新</div>
         </div>
         <div class="media-body">
-          <h3 class="media-heading">{{comic.title}}</h3>
-          <span>{{comic.title}}</span>
+          <h4 class="media-heading">{{comic.title}}</h4>
+          <p class="comic_desc">{{comic.desc}}</p>
         </div>
       </div>
 
@@ -20,12 +20,12 @@
           <div class="comic_cover_jiao_2">更新</div>
         </div>
         <div class="text_bottom">
-          <h3 class="media-heading">{{comic.title}}</h3>
-          <span>{{comic.title}}</span>
+          <h4 class="media-heading">{{comic.title}}</h4>
+          <p class="comic_desc">{{comic.desc}}</p>
         </div>
       </div>
 
-    <!-- </div> -->
+    </div>
   </div>
 </template>
 
@@ -34,7 +34,17 @@ export default {
   name: "ComicList",
   props: {
     msg: String,
-    comic: Array
+    comic_list: Array
+  },
+  methods: {
+    clickCarousel: function(type, content_id) {
+      type === "comic"
+        ? this.$router.push({
+            name: "comicDetail",
+            params: { comic_id: content_id }
+          })
+        : this.$router.push({ name: "bookDetail", book_id: content_id });
+    }
   }
 };
 </script>
@@ -56,6 +66,7 @@ export default {
   /* display: block; */
   vertical-align: middle;
   border: 0;
+  max-height: 100px;
 }
 
 .img_block_2 {
@@ -72,6 +83,12 @@ export default {
 
 .text_bottom {
   text-align: left;
+  max-height: 75px;
+  text-overflow: ellipsis;
+}
+.comic_list_item {
+  max-height: 85px;
+  overflow: hidden;
 }
 
 .comic_list_item_2 {
@@ -106,10 +123,21 @@ export default {
 
 .media-body {
   width: 10000px;
+  max-height: 100px;
 }
 
 .media-heading {
   margin-top: 0;
   margin-bottom: 5px;
+  font-weight: 400;
+}
+.comic_desc {
+  font-weight: lighter;
+  font-size: medium;
+   overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 </style>

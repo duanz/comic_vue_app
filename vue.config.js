@@ -13,7 +13,7 @@ module.exports = {
     // proxy: 'http://api.douban.com/v2'
     proxy: {
       '/api': {
-        target: 'http://localhost:8000/api',
+        target: 'http://www-local.comic.com/api',
         ws: true,
         changeOrigin: true,
         autoRewrite: true,

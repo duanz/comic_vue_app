@@ -1,8 +1,4 @@
 <script type="text/javascript">
-// const night_mode = sessionStorage.getItem("night_mode")!=null?sessionStorage.getItem("night_mode"): false;
-// const night_mode_css_bg_color = sessionStorage.getItem("night_mode_css_bg_color")!=null?sessionStorage.getItem("night_mode_css_bg_color"): "darkgray";
-// const night_mode_css_font_color = sessionStorage.getItem("night_mode_css_font_color")!=null?sessionStorage.getItem("night_mode_css_font_color"): "darkslategray";
-// const night_mode_css_font_size = sessionStorage.getItem("night_mode_css_font_size")!="undefined"?sessionStorage.getItem("night_mode_css_font_size"): 14;
 
 function get_night_mode() {
   const flag = sessionStorage.getItem("night_mode");
