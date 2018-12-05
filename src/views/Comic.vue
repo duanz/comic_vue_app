@@ -26,7 +26,7 @@ export default {
   },
   data: function() {
     return {
-      msg: "",
+      msg: "这是测试",
       image_list: [],
       comic_list: []
     };
