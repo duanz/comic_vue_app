@@ -1,10 +1,13 @@
 <template>
-  <div class="comic_details">
+  <div
+    class="comic_details"
+    v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
+  >
     <header class="header">
-      <HeaderTab msg="hello world" homeButton="/?selected=comic"/>
+      <HeaderTab :title="title" homeButton="/?selected=book"/>
     </header>
     <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
-      <ChapterDetail msg="123" :image_list="image_list" v-on:click.prevent.self/>
+      <div class="content">{{content}}</div>
       <p>
         <button
           type="button"
@@ -23,20 +26,19 @@
 
 <script>
 import HeaderTab from "@/components/HeaderTab.vue";
-import ChapterDetail from "@/components/ChapterDetail.vue";
 
-import { getComicChapterDetail } from "../api/comicApi";
+import { getBookChapterDetail } from "../api/bookApi";
 
 export default {
-  name: "ComicChapterDetail",
+  name: "BookChapterDetail",
   components: {
-    HeaderTab,
-    ChapterDetail
+    HeaderTab
   },
   data: function() {
     return {
       selected: "ascending",
-      image_list: [],
+      content: "",
+      title: "",
       pre_chapter: 1,
       next_chapter: 1
     };
@@ -46,11 +48,15 @@ export default {
       if (!chapter_id) {
         return;
       }
-      getComicChapterDetail(chapter_id).then(res => {
+      getBookChapterDetail(chapter_id).then(res => {
         console.log(res);
-        this.$data.image_list = res.image_url_list;
+        this.$data.content = res.content;
+        this.$data.title = res.title;
         this.$data.pre_chapter = res.relate_chapter_id.pre_id;
         this.$data.next_chapter = res.relate_chapter_id.next_id;
+
+        this.GLOBAL.setViewHistory("book", res.book_id, chapter_id, res.book_title, res.title);
+        // this.GLOBAL.setViewHistory(data_type="book", content_id=res.book_id, chapter_id=chapter_id, title=res.book_title, chapter_title=res.title);
       });
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
@@ -63,9 +69,9 @@ export default {
 </script>
 
 <style scoped>
-image[lazy="loading"] {
-  width: 100%;
-  height: 300px;
-  margin: 0;
+.content {
+  white-space: pre-wrap;
+  text-align: left;
 }
 </style>
+

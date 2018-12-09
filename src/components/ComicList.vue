@@ -14,15 +14,9 @@
         v-bind:name="comic.title"
       >
         <!-- //1 -->
-        <div
-          class="comic_list_item media"
-          v-if="comic.desc_type=='PL'"
-        >
+        <div class="comic_list_item media" v-if="comic.desc_type=='PL'">
           <div class="img_block media-left">
-            <img
-              class="comic_cover"
-              :src="comic.url"
-            />
+            <img class="comic_cover" :src="comic.url">
           </div>
           <div class="media-body">
             <h4 class="media-heading">{{comic.title}}</h4>
@@ -33,15 +27,9 @@
         </div>
 
         <!-- //2 -->
-        <div
-          class="comic_list_item_2"
-          v-if="comic.desc_type=='PT'"
-        >
+        <div class="comic_list_item_2" v-if="comic.desc_type=='PT'">
           <div class="img_block_2">
-            <img
-              class="comic_cover"
-              :src="comic.url"
-            />
+            <img class="comic_cover" :src="comic.url">
           </div>
           <div class="text_bottom">
             <h4 class="media-heading">{{comic.title}}</h4>
@@ -50,7 +38,6 @@
             </div>
           </div>
         </div>
-
       </li>
     </ul>
   </div>
@@ -89,7 +76,7 @@ export default {
   right: 0;
   bottom: 0;
   width: 2em;
-  background: #fff;
+  /* background: #fff; */
   text-align: right;
 }
 .comic_cover {

@@ -3,10 +3,18 @@
     <div class="panel-body">
       <div class="carousel">
         <mt-swipe :auto="4000" showIndicators>
-          <mt-swipe-item v-for="(item, index) in image_list" v-bind:key="index" v-bind:name="item.title">
-            <div class="img-block" v-on:click="clickCarousel(type, item.id)" v-bind:style="{backgroundImage:'url(' + item.url + ')', backgroundRepeat:'no-repeat', backgroundPosition:'center center', backgroundSize: 'contain'}">
+          <mt-swipe-item
+            v-for="(item, index) in image_list"
+            v-bind:key="index"
+            v-bind:name="item.title"
+          >
+            <div
+              class="img-block"
+              v-on:click="clickCarousel(type, item.id)"
+              v-bind:style="{backgroundImage:'url(' + item.url + ')', backgroundRepeat:'no-repeat', backgroundPosition:'center center', backgroundSize: 'contain'}"
+            >
               <p class="carousel-title">{{item.title}}</p>
-              </div>
+            </div>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -15,7 +23,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Carousel",
   props: {
@@ -23,9 +30,17 @@ export default {
     type: String,
     image_list: Array
   },
-  methods:{
-    clickCarousel: function(type, content_id){
-      type==="comic" ? this.$router.push({name: 'comicDetail', params:{comic_id: content_id}}) : this.$router.push({name: 'bookDetail', book_id: content_id});
+  methods: {
+    clickCarousel: function(type, content_id) {
+      type === "comic"
+        ? this.$router.push({
+            name: "comicDetail",
+            params: { comic_id: content_id }
+          })
+        : this.$router.push({
+            name: "bookDetail",
+            params: { book_id: content_id }
+          });
     }
   }
 };

@@ -9,12 +9,12 @@ export default new Router({
       path: '/',
       name: 'index',
       component: () => import('./views/BaseView.vue')
-    }, 
+    },
     {
       path: '/comic',
       name: 'comic',
       component: () => import('./views/Comic.vue')
-    }, 
+    },
     {
       path: '/comic/:comic_id',
       name: 'comicDetail',
@@ -24,11 +24,21 @@ export default new Router({
       path: '/comic/chapter/:chapter_id',
       name: 'comicChapterDetail',
       component: () => import('./views/ComicChapterDetail.vue')
-    }, 
+    },
     {
       path: '/book',
       name: 'book',
       component: () => import('./views/Book.vue')
-    }
+    },
+    {
+      path: '/book/:book_id',
+      name: 'bookDetail',
+      component: () => import('./views/BookDetail.vue')
+    },
+    {
+      path: '/book/chapter/:chapter_id',
+      name: 'bookChapterDetail',
+      component: () => import('./views/BookChapterDetail.vue')
+    },
   ]
 })

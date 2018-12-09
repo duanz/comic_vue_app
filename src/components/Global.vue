@@ -1,12 +1,13 @@
 <script type="text/javascript">
+// import func from "./vue-temp/vue-editor-bridge";
 
 function get_night_mode() {
   const flag = sessionStorage.getItem("night_mode");
-  if(flag == null || flag == "undefined" || flag == false || flag == "false"){
-    return false
-  }else{
-    return true
-  }  
+  if (flag == null || flag == "undefined" || flag == false || flag == "false") {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 function get_night_mode_css_bg_color() {
@@ -17,33 +18,33 @@ function get_night_mode_css_bg_color() {
 
 function get_night_mode_css_bg_image() {
   const _img = sessionStorage.getItem("night_mode_css_bg_image");
-  if(_img.indexOf("read_bg_2") != -1){
-    return require("./../assets/images/read_bg_2.jpg")
-  }else if(_img.indexOf("read_bg_3") != -1){
-    return require("./../assets/images/read_bg_3.jpg")
-  }else if(_img.indexOf("read_bg_4") != -1){
-    return require("./../assets/images/read_bg_4.jpg")
-  }else if(_img.indexOf("read_bg_5") != -1){
-    return require("./../assets/images/read_bg_5.jpg")
+  if (_img.indexOf("read_bg_2") != -1) {
+    return require("./../assets/images/read_bg_2.jpg");
+  } else if (_img.indexOf("read_bg_3") != -1) {
+    return require("./../assets/images/read_bg_3.jpg");
+  } else if (_img.indexOf("read_bg_4") != -1) {
+    return require("./../assets/images/read_bg_4.jpg");
+  } else if (_img.indexOf("read_bg_5") != -1) {
+    return require("./../assets/images/read_bg_5.jpg");
   }
-  return require("./../assets/images/read_bg_1.jpg")
+  return require("./../assets/images/read_bg_1.jpg");
 }
 
 function get_night_mode_css_font_color() {
   const flag = sessionStorage.getItem("night_mode_css_font_color");
-  if(flag == null || flag == "undefined" || flag == "null"){
-    return "dark"
-  }else{
-    return flag
-  }  
+  if (flag == null || flag == "undefined" || flag == "null") {
+    return "dark";
+  } else {
+    return flag;
+  }
 }
 
 function get_night_mode_css_font_size() {
   const flag = sessionStorage.getItem("night_mode_css_font_size");
-  if(flag == null || flag == "undefined"){
-    return 14
-  }else{
-    return parseInt(flag)
+  if (flag == null || flag == "undefined") {
+    return 14;
+  } else {
+    return parseInt(flag);
   }
 }
 
@@ -58,8 +59,51 @@ function get_night_mode_css() {
     backgroundColor: get_night_mode_css_bg_color(),
     color: get_night_mode_css_font_color(),
     fontSize: get_night_mode_css_font_size() + "px",
-    backgroundImage: 'url('+ get_night_mode_css_bg_image()+')'
+    backgroundImage: "url(" + get_night_mode_css_bg_image() + ")"
   };
+}
+
+function setViewHistory(data_type, content_id, chapter_id, title, chapter_title) {
+  const key = content_id + "-" + chapter_id + "-" + data_type;
+  const value = title + "-&&-" + chapter_title;
+  const VIEW_HISTORY = localStorage.getItem("VIEW_HISTORY");
+
+  if (VIEW_HISTORY == "" ||VIEW_HISTORY == "[]" ||VIEW_HISTORY == null || VIEW_HISTORY == "undefined" || VIEW_HISTORY == "null") {
+    // 不存在时保存
+    const history_dict = {};
+    history_dict[key] = value;
+    const history_dict_str = JSON.stringify(history_dict)
+    localStorage.setItem("VIEW_HISTORY", history_dict_str);
+  } else {
+    const history_dict = JSON.parse(VIEW_HISTORY);
+    const flag = history_dict[key];
+    // 不存在时保存
+    if (!flag) {
+      history_dict[key] = value;
+      console.log(history_dict);
+      localStorage.setItem("VIEW_HISTORY", JSON.stringify(history_dict));
+    }
+  }
+}
+
+function getViewHistory() {
+  const VIEW_HISTORY = localStorage.getItem("VIEW_HISTORY");
+  const history_dict = JSON.parse(VIEW_HISTORY);
+  const history_list = [];
+  for (var key in history_dict) {
+    const id_list = key.split("-");
+    const title_list = history_dict[key].split("-&&-");
+    const temp = {
+      data_type: id_list[2],
+      content_id: id_list[0],
+      chapter_id: id_list[1],
+      title: title_list[0],
+      chapter_title: title_list[1]
+    };
+    history_list.push(temp);
+  }
+
+  return history_list;
 }
 
 const footer_selected = "comic";
@@ -97,7 +141,9 @@ export default {
   get_night_mode,
   get_night_mode_css,
   get_night_mode_css_font_size,
-  footer_selected
+  footer_selected,
+  getViewHistory,
+  setViewHistory,
 };
 </script>
 
