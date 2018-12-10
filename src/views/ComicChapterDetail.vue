@@ -51,6 +51,7 @@ export default {
         this.$data.image_list = res.image_url_list;
         this.$data.pre_chapter = res.relate_chapter_id.pre_id;
         this.$data.next_chapter = res.relate_chapter_id.next_id;
+        this.GLOBAL.setViewHistory("comic", res.comic_id, chapter_id, res.comic_title, res.title);
       });
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;

@@ -12,7 +12,7 @@
         <h4>{{title}}</h4>
         <p align="left">&emsp;&emsp;{{desc}}</p>
       </div>
-      <div class="page-cell" @click="toChapter(latest_chapter.id)">
+      <div class="page-cell latest_chapter_page_cell" @click="toChapter(latest_chapter.id)">
         <div
           class="mint-cell"
           v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
@@ -29,8 +29,28 @@
             <i class="mint-cell-allow-right"></i>
           </div>
           <div class="mint-cell-right"></div>
+        </div>        
+      </div>
+      <div class="page-cell last_chapter_page_cell" @click="toChapter(last_chapter_id)">
+        <div v-if="last_chapter"
+          class="mint-cell"
+          v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
+        >
+          <span class="mint-cell-mask"></span>
+          <div class="mint-cell-left"></div>
+          <div class="mint-cell-wrapper">
+            <div class="mint-cell-title" align="left">
+              <span class="mint-cell-text">上次看到</span>
+            </div>
+            <div class="mint-cell-value is-link">
+              <span>{{last_chapter_title}}</span>
+            </div>
+            <i class="mint-cell-allow-right"></i>
+          </div>
+          <div class="mint-cell-right"></div>
         </div>
       </div>
+
       <div class="mulu_content">
         <h4>章节目录</h4>
         <mt-navbar
@@ -90,12 +110,14 @@ export default {
       desc: "",
       latest_chapter: "",
       chapter: [],
-      chapter_reverse: []
+      chapter_reverse: [],
+      last_chapter: false,
+      last_chapter_id: 0,
+      last_chapter_title: ""
     };
   },
   mounted: function() {
     getComicDetail(this.$route.params.comic_id).then(res => {
-      console.log(res);
       const temp_chapter = JSON.parse(JSON.stringify(res.chapter));
       temp_chapter.reverse();
       this.$data.img_list = res.cover;
@@ -104,9 +126,8 @@ export default {
       this.$data.chapter = res.chapter;
       this.$data.chapter_reverse = temp_chapter;
       this.$data.latest_chapter = temp_chapter ? temp_chapter[0] : "";
-      console.log(this.$data.chapter[0].title);
-      console.log(this.$data.chapter_reverse[0].title);
     });
+    this.getLatstChapter();
   },
   methods: {
     toChapter: function(chapter_id) {
@@ -114,6 +135,17 @@ export default {
         name: "comicChapterDetail",
         params: { chapter_id: chapter_id }
       });
+    },
+    getLatstChapter: function () {
+      const key_1 = this.GLOBAL.getViewHistoryContentId("comic", this.$route.params.comic_id);
+      const details = this.GLOBAL.getViewHistory(key_1);
+        console.log("details");
+        console.log(details);
+      if(details){
+        this.$data.last_chapter = true;
+        this.$data.last_chapter_id = details.chapter_id;
+        this.$data.last_chapter_title = details.chapter_title;
+      }
     }
   }
 };
@@ -132,5 +164,12 @@ image[lazy="loading"] {
 h4 {
   margin: 5px auto;
   font-weight: inherit;
+}
+
+.last_chapter_page_cell{
+  border-left: #63a9e3 solid 10px;
+}
+.latest_chapter_page_cell{
+  border-left: #e36382 solid 10px;
 }
 </style>
