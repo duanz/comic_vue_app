@@ -54,9 +54,7 @@ export default {
         this.$data.title = res.title;
         this.$data.pre_chapter = res.relate_chapter_id.pre_id;
         this.$data.next_chapter = res.relate_chapter_id.next_id;
-
         this.GLOBAL.setViewHistory("book", res.book_id, chapter_id, res.book_title, res.title);
-        // this.GLOBAL.setViewHistory(data_type="book", content_id=res.book_id, chapter_id=chapter_id, title=res.book_title, chapter_title=res.title);
       });
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
