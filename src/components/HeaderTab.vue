@@ -2,7 +2,7 @@
   <div class="headertab">
     <mt-header fixed v-bind:title="title?title: ''">
       <!-- <router-link :to="backButton" slot="left"> -->
-      <a @click="goBack()"  slot="left">
+      <a @click="goBack()" slot="left">
         <mt-button icon="back">返回</mt-button>
       </a>
       <router-link :to="homeButton?homeButton:''" slot="right">
@@ -17,11 +17,11 @@ export default {
   name: "HeaderTab",
   props: {
     title: String,
-    homeButton: String,
+    homeButton: String
     // backButton: String
   },
   methods: {
-    goBack: function(){
+    goBack: function() {
       this.$router.go(-1);
     }
   }
@@ -30,6 +30,6 @@ export default {
 
 <style scoped>
 h1 {
-    margin-top: 8px;
+  margin-top: 8px !important;
 }
 </style>

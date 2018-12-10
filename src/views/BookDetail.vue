@@ -4,7 +4,7 @@
     v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
   >
     <header class="header">
-      <HeaderTab :title="title" homeButton="/?selected=comic"/>
+      <HeaderTab :title="title" homeButton="/?selected=book"/>
     </header>
     <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
       <Carousel msg="123" :image_list="img_list" v-on:click.prevent.self/>
@@ -73,10 +73,10 @@
 import HeaderTab from "@/components/HeaderTab.vue";
 import Carousel from "@/components/Carousel.vue";
 
-import { getComicDetail } from "../api/comicApi";
+import { getBookDetail } from "../api/bookApi";
 
 export default {
-  name: "ComicDetail",
+  name: "BookDetail",
   components: {
     HeaderTab,
     Carousel
@@ -94,7 +94,7 @@ export default {
     };
   },
   mounted: function() {
-    getComicDetail(this.$route.params.comic_id).then(res => {
+    getBookDetail(this.$route.params.book_id).then(res => {
       console.log(res);
       const temp_chapter = JSON.parse(JSON.stringify(res.chapter));
       temp_chapter.reverse();
@@ -111,7 +111,7 @@ export default {
   methods: {
     toChapter: function(chapter_id) {
       this.$router.push({
-        name: "comicChapterDetail",
+        name: "bookChapterDetail",
         params: { chapter_id: chapter_id }
       });
     }
