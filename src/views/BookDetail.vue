@@ -102,7 +102,6 @@ export default {
     Carousel
   },
   data: function() {
-    console.log(this.GLOBAL.night_mode);
     return {
       selected: "ascending",
       img_list: [],
@@ -127,7 +126,7 @@ export default {
       this.$data.chapter_reverse = temp_chapter;
       this.$data.latest_chapter = temp_chapter ? temp_chapter[0] : "";
     });
-    this.getLatstChapter();
+    this.getLastChapter();
   },
   methods: {
     toChapter: function(chapter_id) {
@@ -136,10 +135,13 @@ export default {
         params: { chapter_id: chapter_id }
       });
     },
-    getLatstChapter: function () {
-      const key_1 = this.GLOBAL.getViewHistoryContentId("book", this.$route.params.comic_id);
+    getLastChapter: function () {
+      const key_1 = this.GLOBAL.getViewHistoryContentId("book", this.$route.params.book_id);
       const details = this.GLOBAL.getViewHistory(key_1);
+      console.log("ffffffffuck::::"+key_1);
+
       if(details){
+        console.log("ffffffffuck::::"+details);
         this.$data.last_chapter = true;
         this.$data.last_chapter_id = details.chapter_id;
         this.$data.last_chapter_title = details.chapter_title;

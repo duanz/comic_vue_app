@@ -63,30 +63,6 @@ function get_night_mode_css() {
   };
 }
 
-function setViewHistory_old(data_type, content_id, chapter_id, title, chapter_title) {
-  const key = content_id + "-" + chapter_id + "-" + data_type;
-  const value = title + "-&&-" + chapter_title;
-  const VIEW_HISTORY = localStorage.getItem("VIEW_HISTORY");
-
-  if (VIEW_HISTORY == "" ||VIEW_HISTORY == "[]" ||VIEW_HISTORY == null || VIEW_HISTORY == "undefined" || VIEW_HISTORY == "null") {
-    // 不存在时保存
-    const history_dict = {};
-    history_dict[key] = value;
-    const history_dict_str = JSON.stringify(history_dict)
-    localStorage.setItem("VIEW_HISTORY", history_dict_str);
-  } else {
-    const history_dict = JSON.parse(VIEW_HISTORY);
-    const flag = history_dict[key];
-    // 不存在时保存
-    if (!flag) {
-      history_dict[key] = value;
-      console.log(history_dict);
-      localStorage.setItem("VIEW_HISTORY", JSON.stringify(history_dict));
-    }
-  }
-}
-
-
 function setViewHistoryContentId(data_type, content_id, chapter_id) {
   const content_ids = localStorage.getItem("VIEW_HISTORY_CONTENT_LIST");
   const key = content_id + "-" + data_type;
@@ -115,7 +91,8 @@ function getViewHistoryContentId(data_type="", content_id="") {
   }
   const key = content_id + "-" + data_type;
   const val = history_dict[key];
-  return history_dict.hasOwnProperty(key)?val:false;
+  const flag = history_dict.hasOwnProperty(key);  
+  return flag?val:false;
 }
 
 
@@ -150,7 +127,9 @@ function getViewHistory(item_key="") {
   const VIEW_HISTORY = localStorage.getItem("VIEW_HISTORY");
   const history_dict = JSON.parse(VIEW_HISTORY);
   if( item_key != "" ){
-    return history_dict.hasOwnProperty(key)?history_dict[item_key]:false;
+    const flag = history_dict.hasOwnProperty(item_key);
+    console.log("-----------------------" + flag);
+    return flag?history_dict[item_key]:false;
   }
   const history_list = [];
   for (var key in history_dict) {
