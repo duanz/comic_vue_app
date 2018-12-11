@@ -47,7 +47,6 @@ export default {
         return;
       }
       getComicChapterDetail(chapter_id).then(res => {
-        console.log(res);
         this.$data.image_list = res.image_url_list;
         this.$data.pre_chapter = res.relate_chapter_id.pre_id;
         this.$data.next_chapter = res.relate_chapter_id.next_id;

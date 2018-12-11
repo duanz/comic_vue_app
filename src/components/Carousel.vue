@@ -50,14 +50,14 @@ export default {
 template {
   background-color: whitesmoke;
 }
+
 .carousel {
-  height: 200px;
+  height: 30vh;
   color: #fff;
   font-size: 30px;
   text-align: center;
   margin-bottom: 8px;
 }
-
 .carousel-title {
   background: #e4e2da;
   color: #000000;

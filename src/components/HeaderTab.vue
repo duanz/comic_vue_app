@@ -1,7 +1,6 @@
 <template>
   <div class="headertab">
     <mt-header fixed v-bind:title="title?title: ''">
-      <!-- <router-link :to="backButton" slot="left"> -->
       <a @click="goBack()" slot="left">
         <mt-button icon="back">返回</mt-button>
       </a>
@@ -27,9 +26,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-h1 {
-  margin-top: 8px !important;
-}
-</style>

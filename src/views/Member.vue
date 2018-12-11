@@ -55,7 +55,6 @@ export default {
     msg: String
   },
   data: function() {
-    console.log(typeof(this.GLOBAL.get_night_mode()));
     return {
       night_mode: this.GLOBAL.get_night_mode(),
       font_size: this.GLOBAL.get_night_mode_css_font_size()

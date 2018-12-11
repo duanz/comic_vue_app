@@ -128,8 +128,10 @@ function getViewHistory(item_key="") {
   const history_dict = JSON.parse(VIEW_HISTORY);
   if( item_key != "" ){
     const flag = history_dict.hasOwnProperty(item_key);
-    console.log("-----------------------" + flag);
-    return flag?history_dict[item_key]:false;
+    const val = history_dict[item_key];
+    val["data_type"] = item_key.split("-")[1];
+    val["chapter_id"] = item_key.split("-")[0];
+    return flag?val:false;
   }
   const history_list = [];
   for (var key in history_dict) {

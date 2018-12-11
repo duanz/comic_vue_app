@@ -102,7 +102,6 @@ export default {
     Carousel
   },
   data: function() {
-    console.log(this.GLOBAL.night_mode);
     return {
       selected: "ascending",
       img_list: [],
@@ -139,9 +138,7 @@ export default {
     getLatstChapter: function () {
       const key_1 = this.GLOBAL.getViewHistoryContentId("comic", this.$route.params.comic_id);
       const details = this.GLOBAL.getViewHistory(key_1);
-        console.log("details");
-        console.log(details);
-      if(details){
+      if(key_1 && details){
         this.$data.last_chapter = true;
         this.$data.last_chapter_id = details.chapter_id;
         this.$data.last_chapter_title = details.chapter_title;

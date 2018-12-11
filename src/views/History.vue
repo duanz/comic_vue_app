@@ -58,7 +58,6 @@ export default {
           this.$data.content_list = res;
         });
       }
-      console.log(this.$data.content_list);
     },
     list_item_style: function() {
       return {

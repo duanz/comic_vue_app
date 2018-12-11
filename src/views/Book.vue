@@ -39,13 +39,10 @@ export default {
           if (res[i].block_type == "carousel") {
             this.$data.image_list = res[i].results;
           } else {
-            console.log(res[i].results.desc_type);
             temp.push(res[i].results);
           }
         }
         this.$data.comic_list = temp;
-        console.log("==========");
-        console.log(this.$data.comic_list);
       });
     }
   },

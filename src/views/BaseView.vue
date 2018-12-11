@@ -89,7 +89,6 @@ export default {
     Member
   },
   data() {
-    console.log(this.$route.query.selected);
     return {
       selected: this.$route.query.selected
         ? this.$route.query.selected

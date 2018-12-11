@@ -138,10 +138,8 @@ export default {
     getLastChapter: function () {
       const key_1 = this.GLOBAL.getViewHistoryContentId("book", this.$route.params.book_id);
       const details = this.GLOBAL.getViewHistory(key_1);
-      console.log("ffffffffuck::::"+key_1);
-
-      if(details){
-        console.log("ffffffffuck::::"+details);
+      console.log(details);
+      if(key_1 && details){
         this.$data.last_chapter = true;
         this.$data.last_chapter_id = details.chapter_id;
         this.$data.last_chapter_title = details.chapter_title;
