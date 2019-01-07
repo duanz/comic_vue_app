@@ -4,8 +4,6 @@
     v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
   >
     <div class="page-wrap">
-      <!-- <div class="page-title">{{title}}</div> -->
-      <!-- tabcontainer -->
       <mt-tab-container
         class="page-tabbar-container"
         v-model="selected"
@@ -53,33 +51,6 @@ import Book from "@/views/Book.vue";
 import History from "@/views/History.vue";
 import Member from "@/views/Member.vue";
 
-const _image_list = [
-  {
-    id: 1,
-    url:
-      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-    title: "111"
-  },
-  {
-    id: 2,
-    url:
-      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-    title: "2222"
-  },
-  {
-    id: 3,
-    url:
-      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-    title: "322"
-  },
-  {
-    id: 4,
-    url:
-      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541874793051&di=21e0827b62d75dada6078c0ee38a9ccc&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F9345d688d43f8794906df240df1b0ef41ad53ac9.jpg",
-    title: "433"
-  }
-];
-
 export default {
   name: "BaseView",
   components: {
@@ -92,8 +63,7 @@ export default {
     return {
       selected: this.$route.query.selected
         ? this.$route.query.selected
-        : this.GLOBAL.footer_selected,
-      image_list: _image_list
+        : this.GLOBAL.footer_selected
     };
   }
 };

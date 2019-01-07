@@ -1,11 +1,11 @@
 <template>
   <div class="page_tabbar">
     <header class="header">
-      <HeaderTab title="漫画" />
+      <HeaderTab title="漫画" searchButton="/search/comic"/>
     </header>
-    <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
-      <Carousel :msg="msg" type="comic" :image_list="image_list" />
-      <ComicList :msg="msg" :comic_list="comic_list" />
+    <div class="page-content" style="margin-top: 40px; margin-bottom: 55px;padding-top: 0;">
+      <Carousel :msg="barTitle" type="comic" :image_list="image_list"/>
+      <ComicList :barTitle="barTitle" :comic_list="comic_list"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   data: function() {
     return {
-      msg: "这是测试",
+      barTitle: "这是测试",
       image_list: [],
       comic_list: []
     };

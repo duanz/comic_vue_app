@@ -4,8 +4,8 @@
       <a @click="goBack()" slot="left">
         <mt-button icon="back">返回</mt-button>
       </a>
-      <router-link :to="homeButton?homeButton:''" slot="right">
-        <mt-button icon="search iconfont icon-shouye"></mt-button>
+      <router-link :to="homeButton?homeButton:searchButton" slot="right">
+        <mt-button :icon="homeButton?'search iconfont icon-shouye':'search iconfont icon-sousuo'"></mt-button>
       </router-link>
     </mt-header>
   </div>
@@ -16,8 +16,8 @@ export default {
   name: "HeaderTab",
   props: {
     title: String,
-    homeButton: String
-    // backButton: String
+    homeButton: String,
+    searchButton: { default: "" }
   },
   methods: {
     goBack: function() {

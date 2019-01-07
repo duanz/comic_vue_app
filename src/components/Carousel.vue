@@ -1,25 +1,25 @@
 <template>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="carousel">
-        <mt-swipe :auto="4000" showIndicators>
-          <mt-swipe-item
-            v-for="(item, index) in image_list"
-            v-bind:key="index"
-            v-bind:name="item.title"
-          >
-            <div
-              class="img-block"
-              v-on:click="clickCarousel(type, item.id)"
-              v-bind:style="{backgroundImage:'url(' + item.url + ')', backgroundRepeat:'no-repeat', backgroundPosition:'center center', backgroundSize: 'contain'}"
-            >
-              <p class="carousel-title">{{item.title}}</p>
-            </div>
-          </mt-swipe-item>
-        </mt-swipe>
-      </div>
-    </div>
+  <!-- <div class="panel panel-default">
+  <div class="panel-body">-->
+  <div class="carousel">
+    <mt-swipe :auto="4000" showIndicators>
+      <mt-swipe-item
+        v-for="(item, index) in image_list"
+        v-bind:key="index"
+        v-bind:name="item.title"
+      >
+        <div
+          class="img-block"
+          v-on:click="clickCarousel(type, item.id)"
+          v-bind:style="{backgroundImage:'url(' + item.url + ')', backgroundRepeat:'no-repeat', backgroundPosition:'center center', backgroundSize: 'contain'}"
+        >
+          <p class="carousel-title">{{item.title}}</p>
+        </div>
+      </mt-swipe-item>
+    </mt-swipe>
   </div>
+  <!-- </div>
+  </div>-->
 </template>
 
 <script>

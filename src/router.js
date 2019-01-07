@@ -21,6 +21,11 @@ export default new Router({
       component: () => import('./views/ComicDetail.vue')
     },
     {
+      path: '/search/comic',
+      name: 'comicSearch',
+      component: () => import('./views/SearchView.vue')
+    },
+    {
       path: '/comic/chapter/:chapter_id',
       name: 'comicChapterDetail',
       component: () => import('./views/ComicChapterDetail.vue')
@@ -34,6 +39,11 @@ export default new Router({
       path: '/book/:book_id',
       name: 'bookDetail',
       component: () => import('./views/BookDetail.vue')
+    },
+    {
+      path: '/search/book',
+      name: 'bookSearch',
+      component: () => import('./views/SearchView.vue')
     },
     {
       path: '/book/chapter/:chapter_id',

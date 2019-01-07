@@ -3,8 +3,8 @@
     <header class="header">
       <HeaderTab title="历史"/>
     </header>
-    <div class="page-content" style="margin-top: 48px; margin-bottom: 55px;padding-top: 0;">
-      <Carousel :msg="msg"/>
+    <div class="page-content" style="margin-top: 40px; margin-bottom: 55px;padding-top: 0;">
+      <!-- <Carousel :msg="msg"/> -->
       <div class="history_content panel panel-info">
         <ul class="list-group">
           <li

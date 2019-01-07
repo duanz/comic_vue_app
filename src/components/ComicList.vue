@@ -3,12 +3,12 @@
     class="comic_list panel panel-info"
     v-bind:style="this.GLOBAL.get_night_mode()?this.GLOBAL.get_night_mode_css():''"
   >
-    <div class="panel-heading text-left">{{msg}}</div>
+    <div class="panel-heading text-left">{{barTitle}}</div>
     <ul class="list-group">
       <li
         class="list-group-item"
         v-for="(comic, index) in comic_list"
-        v-on:click="clickCarousel('comic', comic.id)"
+        v-on:click="clickCarousel(content_type, comic.id)"
         title="item.title"
         v-bind:key="index"
         v-bind:name="comic.title"
@@ -47,8 +47,9 @@
 export default {
   name: "ComicList",
   props: {
-    msg: String,
-    comic_list: Array
+    barTitle: String,
+    comic_list: Array,
+    content_type: { default: "comic" }
   },
   methods: {
     clickCarousel: function(type, content_id) {
@@ -57,7 +58,10 @@ export default {
             name: "comicDetail",
             params: { comic_id: content_id }
           })
-        : this.$router.push({ name: "bookDetail", book_id: content_id });
+        : this.$router.push({
+            name: "bookDetail",
+            params: { book_id: content_id }
+          });
     }
   }
 };
